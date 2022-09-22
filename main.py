@@ -11,6 +11,8 @@ def create_customer(customer_id: int) -> Customer:
 if __name__ == '__main__':
     customers = []
 
+    print('\033[94m******> Welcome to Biker! <******\033[0m')
+
     for i in range(1, 6):
         customer = create_customer(i)
         customers.append(customer)
