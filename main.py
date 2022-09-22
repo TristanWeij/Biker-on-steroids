@@ -1,16 +1,20 @@
 from src.Customer import Customer
-from src.Biker import Biker
-from src.OrderItem import OrderItem
+
+
+def create_customer(customer_id: int) -> Customer:
+    customer_first_name = input('Enter your first name: ')
+    customer_last_name = input('Enter your last name: ')
+
+    return Customer(customer_id, customer_first_name, customer_last_name)
+
 
 if __name__ == '__main__':
-    customer = Customer(1, 'Tristan', 'Weij')
+    customers = []
 
-    orderItems = [
-        OrderItem('Rode herenfiets', 1, 25.0),
-        OrderItem('Kinderzitje', 1, 5.0),
-        OrderItem('Helm', 2, 3.5)
-    ]
+    for i in range(1, 6):
+        customer = create_customer(i)
+        customers.append(customer)
 
-    customerOrder = Biker.create_order(customer, orderItems)
+        print(f'\n\033[94mINFO: Customer created! \033[0m\n')
 
-    print(customer)
+    print(customers)
