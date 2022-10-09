@@ -1,5 +1,7 @@
 import os
 
+from . import customers
+from . import db
 from flask import Flask
 
 
@@ -24,10 +26,8 @@ def create_app(test_config=None):
     def hello():
         return '<h1>Biker</h1>'
 
-    from . import db
     db.init_app(app)
 
-    from . import customers
     app.register_blueprint(customers.blueprint)
 
     return app

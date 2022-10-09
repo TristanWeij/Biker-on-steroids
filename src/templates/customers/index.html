@@ -30,7 +30,7 @@
                         <td class="border border-slate-600 p-2">{{ customer['first_name'] }}</td>
                         <td class="border border-slate-600 p-2">{{ customer['last_name'] }}</td>
                         <td class="border border-slate-600 p-2">
-                            <form action="{{ url_for('customers.delete', id=customer['id']) }}" method="post">
+                            <form action="{{ url_for('customers.delete', identifier=customer['id']) }}" method="post">
                                 <input class="danger" type="submit" value="Delete">
                             </form>
                         </td>

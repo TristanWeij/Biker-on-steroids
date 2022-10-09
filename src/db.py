@@ -23,10 +23,8 @@ def close(e=None):
 
 
 def init():
-    db = database()
-
     with current_app.open_resource('schema.sql') as schema:
-        db.executescript(schema.read().decode('utf8'))
+        database().executescript(schema.read().decode('utf8'))
 
 
 @click.command('init-db')
