@@ -2,23 +2,36 @@
 
 {% block content %}
 <div class="box-border p-3">
-    <h1 class="text-blue-600">Customers</h1>
+    <div class="mb-3">
+        <h1 class="text-cyan-600 text-3xl">Biker customers</h1>
+    </div>
 
-    <table class="table-fixed border-collapse border border-slate-500">
-        <tbody>
-            <tr>
-                <th class="border border-slate-600 p-2">ID</th>
-                <th class="border border-slate-600 p-2">First name</th>
-                <th class="border border-slate-600 p-2">Last name</th>
-            </tr>
-            {% for customer in customers %}
+    <div class="my-5">
+        <a
+            class="rounded-full bg-cyan-500 text-white p-2"
+            href="{{ url_for('customers.create') }}"
+        >
+            Create customer
+        </a>
+    </div>
+
+    <div>
+        <table class="table-fixed border-collapse border border-slate-500 my-5">
+            <tbody>
                 <tr>
-                    <td class="border border-slate-600 p-2">{{ customer['id'] }}</td>
-                    <td class="border border-slate-600 p-2">{{ customer['first_name'] }}</td>
-                    <td class="border border-slate-600 p-2">{{ customer['last_name'] }}</td>
+                    <th class="border border-slate-600 p-2">ID</th>
+                    <th class="border border-slate-600 p-2">First name</th>
+                    <th class="border border-slate-600 p-2">Last name</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% for customer in customers %}
+                    <tr>
+                        <td class="border border-slate-600 p-2">{{ customer['id'] }}</td>
+                        <td class="border border-slate-600 p-2">{{ customer['first_name'] }}</td>
+                        <td class="border border-slate-600 p-2">{{ customer['last_name'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

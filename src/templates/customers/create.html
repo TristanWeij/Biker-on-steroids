@@ -1,17 +1,50 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="container">
-    <h1 class="text-blue-600">Create customer</h1>
+<div class="box-border p-3">
+    <div class="mb-3">
+        <h1 class="text-cyan-600 text-3xl">Create customer</h1>
+    </div>
 
-    <form method="post">
-        <label for="first_name">First name</label>
-        <input name="first_name" id="first_name" value="{{ request.form['first_name'] }}" required>
+    <div class="my-5">
+        <a
+            class="rounded-full bg-cyan-500 text-white p-2"
+            href="{{ url_for('customers.index') }}"
+        >
+            Back to home
+        </a>
+    </div>
 
-        <label for="last_name">Last name</label>
-        <input name="last_name" id="last_name" value="{{ request.form['last_name'] }}" required>
+    <div class="my-5">
+        <form method="post">
+            <div class="border border-gray-400 rounded-lg flex mb-4 shadow-lg">
+                <input
+                    class="flex-auto p-2 block rounded-lg font-medium outline-none border border-transparent focus:border-cyan-500 focus:text-black"
+                    name="first_name"
+                    id="first_name"
+                    placeholder="Enter your first name..."
+                    value="{{ request.form['first_name'] }}"
+                    required
+                >
+            </div>
 
-        <input type="submit" value="Save">
-    </form>
+            <div class="border border-gray-400 rounded-lg flex mb-4 shadow-lg">
+                <input
+                    class="flex-auto p-2 block rounded-lg font-medium outline-none border border-transparent focus:border-cyan-500 focus:text-black"
+                    name="last_name"
+                    id="last_name"
+                    placeholder="Enter your last name..."
+                    value="{{ request.form['last_name'] }}"
+                    required
+                >
+            </div>
+
+            <input
+                class="rounded-full bg-cyan-500 text-white p-2"
+                type="submit"
+                value="Save"
+            >
+        </form>
+    </div>
 </div>
 {% endblock %}
