@@ -22,9 +22,12 @@ def create_app(test_config=None):
 
     @app.route('/')
     def hello():
-        return '<h1>Customer overview</h1>'
+        return '<h1>Biker</h1>'
 
     from . import db
     db.init_app(app)
+
+    from . import customers
+    app.register_blueprint(customers.blueprint)
 
     return app

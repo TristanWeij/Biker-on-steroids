@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Biker - Customer overview</title>
-</head>
-<body>
-    <h1>Customers</h1>
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-blue-600">Customers</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Tristan</td>
+                <td>Weij</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
