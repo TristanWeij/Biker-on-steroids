@@ -1,7 +1,7 @@
 import functools
 
 from flask import (
-    Blueprint, flash, redirect, render_template, request, url_for
+    Blueprint, abort, flash, redirect, render_template, request, url_for
 )
 from src.db import database
 
@@ -10,13 +10,9 @@ blueprint = Blueprint('customers', __name__, url_prefix='/customers')
 
 @blueprint.get('/')
 def index():
-    db = database()
-
-    customers = db.execute(
+    customers = database().execute(
         'SELECT id, first_name, last_name FROM customers;'
     ).fetchall()
-
-    print(customers)
 
     return render_template('customers/index.html', customers=customers)
 
@@ -37,15 +33,29 @@ def create():
         if error is not None:
             flash(error)
         else:
-            db = database()
-
-            db.execute(
+            database().execute(
                 'INSERT INTO customers (first_name, last_name)'
                 ' VALUES (?, ?)',
                 (first_name, last_name)
             )
-            db.commit()
+            database().commit()
 
             return redirect(url_for('customers.index'))
 
     return render_template('customers/create.html')
+
+
+@blueprint.post('/<int:identifier>/delete')
+def delete(identifier):
+    customer = database().execute(
+        'SELECT * FROM customers WHERE id = ?;',
+        (identifier,)
+    ).fetchone()
+
+    if customer is None:
+        abort(404, f'Customer doesn\'t exist.')
+
+    database().execute('DELETE FROM customers WHERE id = ?', (identifier,))
+    database().commit()
+
+    return redirect(url_for('customers.index'))
