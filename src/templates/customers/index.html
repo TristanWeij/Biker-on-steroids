@@ -1,21 +1,23 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="container">
+<div class="box-border p-3">
     <h1 class="text-blue-600">Customers</h1>
 
-    <table>
+    <table class="table-fixed border-collapse border border-slate-500">
         <tbody>
             <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
+                <th class="border border-slate-600 p-2">ID</th>
+                <th class="border border-slate-600 p-2">First name</th>
+                <th class="border border-slate-600 p-2">Last name</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Tristan</td>
-                <td>Weij</td>
-            </tr>
+            {% for customer in customers %}
+                <tr>
+                    <td class="border border-slate-600 p-2">{{ customer['id'] }}</td>
+                    <td class="border border-slate-600 p-2">{{ customer['first_name'] }}</td>
+                    <td class="border border-slate-600 p-2">{{ customer['last_name'] }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
