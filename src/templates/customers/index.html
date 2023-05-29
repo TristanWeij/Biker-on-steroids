@@ -8,10 +8,17 @@
 
     <div class="my-5">
         <a
-            class="rounded-full bg-cyan-500 text-white p-2"
+            class="rounded-full bg-cyan-500 text-white p-2 mr-2"
+            href="{{ url_for('index') }}"
+        >
+            Back to index
+        </a>
+
+        <a
+            class="rounded-full bg-cyan-500 text-white p-2 mr-2"
             href="{{ url_for('customers.create') }}"
         >
-            Create customer
+            Add customer
         </a>
     </div>
 

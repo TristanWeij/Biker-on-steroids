@@ -2,7 +2,7 @@ import os
 
 from . import customers
 from . import db
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app(test_config=None):
@@ -23,8 +23,8 @@ def create_app(test_config=None):
         pass
 
     @app.route("/")
-    def hello():
-        return "<h1>Biker</h1>"
+    def index():
+        return render_template("index.html")
 
     db.init_app(app)
 
